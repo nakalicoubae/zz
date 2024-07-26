@@ -1,0 +1,59 @@
+document.addEventListener('DOMContentLoaded', function() {
+    // 체크리스트 라디오 버튼 상호 배제
+    const radios = document.querySelectorAll('input[type="radio"]');
+    radios.forEach(radio => {
+        radio.addEventListener('change', function() {
+            const name = this.getAttribute('name');
+            const others = document.querySelectorAll(`input[name="${name}"]`);
+            others.forEach(other => {
+                if (other !== this) {
+                    other.checked = false;
+                }
+            });
+        });
+    });
+
+    // 타이머 기능
+    const timerElement = document.getElementById('timer');
+    const startTimeElement = document.getElementById('start-time');
+    const endTimeElement = document.getElementById('end-time');
+    const extendButton = document.getElementById('extend-btn');
+
+    if (timerElement && startTimeElement && endTimeElement) {
+        let startTime = new Date();
+        let endTime = new Date(startTime.getTime() + 60 * 60 * 1000); // 1 hour later
+        let timer;
+
+        startTimeElement.textContent = startTime.toLocaleTimeString();
+        endTimeElement.textContent = endTime.toLocaleTimeString();
+
+        function updateTimer() {
+            let now = new Date();
+            let diff = endTime - now;
+
+            if (diff <= 0) {
+                clearInterval(timer);
+                alert('사용이 종료되었습니다. 깔끔한 뒷정리 부탁드려요 :)');
+                return;
+            }
+
+            let hours = Math.floor(diff / (1000 * 60 * 60));
+            let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            timerElement.textContent =
+                (hours < 10 ? '0' : '') + hours + ':' +
+                (minutes < 10 ? '0' : '') + minutes + ':' +
+                (seconds < 10 ? '0' : '') + seconds;
+
+            if (diff <= 10 * 60 * 1000) { // 10 minutes left
+                extendButton.disabled = false;
+            }
+        }
+
+        timer = setInterval(updateTimer, 1000);
+
+        extendButton.addEventListener('click', function() {
+            endTime = new Date(endTime.getTime() + 30 * 60 * 1000); // Add 30 minutes
+            endTimeElement.textContent = endTime.toLocaleTimeString();
+            this.disabled = true

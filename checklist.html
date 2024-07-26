@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>체크리스트 - 옥센</title>
+    <link rel="stylesheet" href="/static/css/style.txt">
+</head>
+<body>
+    <header>
+        <h1>옥센 체크리스트</h1>
+    </header>
+    <main>
+        <form id="checklist-form">
+            <table>
+                <tr>
+                    <th>항목</th>
+                    <th>예</th>
+                    <th>아니오</th>
+                    <th>파손</th>
+                </tr>
+                <tr>
+                    <td>원판</td>
+                    <td><input type="radio" name="plate" value="yes"></td>
+                    <td><input type="radio" name="plate" value="no"></td>
+                    <td><input type="checkbox" name="plate-damage"></td>
+                </tr>
+                <tr>
+                    <td>바벨</td>
+                    <td><input type="radio" name="barbell" value="yes"></td>
+                    <td><input type="radio" name="barbell" value="no"></td>
+                    <td><input type="checkbox" name="barbell-damage"></td>
+                </tr>
+                <tr>
+                    <td>벤치</td>
+                    <td><input type="radio" name="bench" value="yes"></td>
+                    <td><input type="radio" name="bench" value="no"></td>
+                    <td><input type="checkbox" name="bench-damage"></td>
+                </tr>
+                <tr>
+                    <td>덤벨</td>
+                    <td><input type="radio" name="dumbbell" value="yes"></td>
+                    <td><input type="radio" name="dumbbell" value="no"></td>
+                    <td><input type="checkbox" name="dumbbell-damage"></td>
+                </tr>
+                <tr>
+                    <td>싯업보드</td>
+                    <td><input type="radio" name="situp" value="yes"></td>
+                    <td><input type="radio" name="situp" value="no"></td>
+                    <td><input type="checkbox" name="situp-damage"></td>
+                </tr>
+                <tr>
+                    <td>비상문</td>
+                    <td><input type="radio" name="emergency" value="yes"></td>
+                    <td><input type="radio" name="emergency" value="no"></td>
+                    <td><input type="checkbox" name="emergency-damage"></td>
+                </tr>
+                <tr>
+                    <td>소등</td>
+                    <td><input type="radio" name="lights" value="yes"></td>
+                    <td><input type="radio" name="lights" value="no"></td>
+                    <td><input type="checkbox" name="lights-damage"></td>
+                </tr>
+            </table>
+            <textarea id="comments" name="comments" placeholder="요구 및 불편사항"></textarea>
+            <button type="submit">제출</button>
+        </form>
+    </main>
+    <script src="/static/js/script.txt"></script>
+</body>
+</html>
